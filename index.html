@@ -134,33 +134,128 @@
         .overall-score {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background-color: var(--primary-light);
+            background-color: #f3f6ff;
             padding: 20px;
             border-radius: var(--radius);
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        .score-left {
+        .grade-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            width: 100%;
         }
 
         .grade-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 70px;
+            height: 90px;
+            border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            background-color: var(--success-color);
             color: white;
+            flex-shrink: 0;
+        }
+
+        .grade-circle.A {
+            background-color: #4caf50;
         }
 
         .grade-circle.B {
+            background-color: #57a75b;
+        }
+
+        .grade-circle.C {
+            background-color: #f59e0b;
+        }
+
+        .grade-circle.D, .grade-circle.F {
+            background-color: #ef4444;
+        }
+
+        .score-details {
+            flex: 1;
+        }
+
+        .score-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .score-text {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .score-label {
+            background-color: #d4edda;
+            color: #2c7a30;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            animation: fadeIn 0.5s ease forwards;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .score-label.score-good {
+            background-color: #d4edda;
+            color: #2c7a30;
+        }
+
+        .score-label.score-average {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .score-label.score-poor {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        @media (max-width: 600px) {
+            .overall-score {
+                padding: 16px;
+            }
+            
+            .grade-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .grade-circle {
+                margin-right: auto;
+                margin-left: auto;
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .score-number {
+                font-size: 1.8rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .score-text {
+                font-size: 1rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .score-label {
+                margin: 12px auto 0;
+            }
+        }-circle.B {
             background-color: #43a047;
         }
 
@@ -945,14 +1040,14 @@
 
         <div class="results-section" id="results-section">
             <div class="overall-score">
-                <div class="score-left">
-                    <div class="grade-circle" id="grade-circle">A</div>
+                <div class="grade-container">
+                    <div class="grade-circle" id="grade-circle">B</div>
                     <div class="score-details">
-                        <div class="score-number"><span id="score-points">93</span> Points</div>
-                        <div class="score-text" id="score-text">Very solid subject line that should perform well for you.</div>
+                        <div class="score-number"><span id="score-points">89</span> Points</div>
+                        <div class="score-text" id="score-text">Good subject line with room for minor improvements.</div>
                     </div>
+                    <div class="score-label" id="overall-score">Good</div>
                 </div>
-                <div class="score-label" id="overall-score">Excellent</div>
             </div>
 
             <div class="metrics-grid">
@@ -1283,7 +1378,7 @@
             </div>
         </div>
 
-        <div class="footer">
+       <div class="footer">
             <div class="footer-tagline">Made by <span>Gangadhar</span>, With <span>Claude</span> 🤖</div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/gangadhar02/" target="_blank" class="social-link linkedin">
@@ -1301,6 +1396,7 @@
             </div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
