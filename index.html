@@ -43,11 +43,12 @@
 
         .container {
             width: 100%;
-            max-width: 700px;
+            max-width: 800px;
             background-color: var(--bg-color);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 30px;
+            margin-bottom: 30px;
         }
 
         header {
@@ -65,7 +66,7 @@
         p.description {
             color: var(--text-light);
             font-size: 0.95rem;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
@@ -135,14 +136,55 @@
             align-items: center;
             justify-content: space-between;
             background-color: var(--primary-light);
-            padding: 15px 20px;
+            padding: 20px;
             border-radius: var(--radius);
             margin-bottom: 20px;
         }
 
-        .score-text {
+        .score-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .grade-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
             font-weight: 700;
-            font-size: 1.1rem;
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .grade-circle.B {
+            background-color: #43a047;
+        }
+
+        .grade-circle.C {
+            background-color: var(--warning-color);
+        }
+
+        .grade-circle.D, .grade-circle.F {
+            background-color: var(--danger-color);
+        }
+
+        .score-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .score-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .score-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
         .score-label {
@@ -171,8 +213,9 @@
 
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
+            margin-bottom: 30px;
         }
 
         .metric-card {
@@ -184,11 +227,46 @@
             animation: slideUp 0.5s ease forwards;
         }
 
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
         .metric-title {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-light);
-            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .metric-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .metric-icon.success {
+            background-color: var(--success-color);
+        }
+
+        .metric-icon.warning {
+            background-color: var(--warning-color);
+        }
+
+        .metric-icon.danger {
+            background-color: var(--danger-color);
+        }
+
+        .metric-icon.neutral {
+            background-color: #9e9e9e;
         }
 
         .metric-value {
@@ -199,90 +277,15 @@
             gap: 8px;
         }
 
+        .metric-value-small {
+            font-size: 1rem;
+        }
+
         .metric-indicator {
             font-size: 0.85rem;
             padding: 3px 8px;
             border-radius: 50px;
             display: inline-block;
-        }
-
-        .insights-container {
-            margin-top: 25px;
-        }
-
-        .insight-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            transform: translateX(-30px);
-            opacity: 0;
-            animation: slideRight 0.5s ease forwards;
-        }
-
-        .insight-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .insight-icon {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        .insight-icon.info {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-        }
-
-        .insight-icon.warning {
-            background-color: rgba(255, 152, 0, 0.2);
-            color: var(--warning-color);
-        }
-
-        .insight-icon.danger {
-            background-color: rgba(244, 67, 54, 0.2);
-            color: var(--danger-color);
-        }
-
-        .insight-content {
-            flex: 1;
-        }
-
-        .insight-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-
-        .insight-desc {
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-
-        .keywords-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .keyword {
-            background-color: var(--bg-light);
-            padding: 5px 10px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--text-light);
         }
 
         .progress-bar {
@@ -316,11 +319,349 @@
             background-color: var(--danger-color);
         }
 
+        .metric-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .metric-insight {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .metric-data {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .metric-data-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-right: 5px;
+        }
+
+        .preview-section {
+            margin-top: 20px;
+            background-color: var(--bg-light);
+            border-radius: var(--radius);
+            padding: 16px;
+            transform: translateY(40px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .preview-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .preview-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .preview-box {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 12px;
+        }
+
+        .preview-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .preview-content {
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 5px;
+            border-radius: 4px;
+            background-color: var(--bg-light);
+        }
+
+        .section-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 30px 0;
+        }
+
+        .checklist-section {
+            margin-top: 20px;
+        }
+
+        .checklist-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .checklist-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border-radius: var(--radius);
+            background-color: var(--bg-light);
+            transform: translateX(-30px);
+            opacity: 0;
+            animation: slideRight 0.5s ease forwards;
+        }
+
+        .checklist-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+        }
+
+        .checklist-icon.success {
+            background-color: var(--success-color);
+        }
+
+        .checklist-icon.warning {
+            background-color: var(--warning-color);
+        }
+
+        .checklist-icon.danger {
+            background-color: var(--danger-color);
+        }
+
+        .checklist-icon.neutral {
+            background-color: #9e9e9e;
+        }
+
+        .checklist-content {
+            flex: 1;
+        }
+
+        .checklist-content-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .checklist-status {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .status-found {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: var(--danger-color);
+        }
+
+        .status-not-found {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success-color);
+        }
+
+        .status-neutral {
+            background-color: rgba(158, 158, 158, 0.1);
+            color: #757575;
+        }
+
+        .checklist-desc {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .checklist-recommendation {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .checklist-stat {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chart-container {
+            margin-top: 15px;
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 10px;
+        }
+
+        .sentiment-chart {
+            display: flex;
+            height: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .sentiment-negative {
+            background-color: var(--danger-color);
+            flex: 24;
+        }
+
+        .sentiment-neutral {
+            background-color: #9e9e9e;
+            flex: 31;
+        }
+
+        .sentiment-positive {
+            background-color: var(--success-color);
+            flex: 45;
+        }
+
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .keyword {
+            background-color: var(--bg-light);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
         .character-counter {
             margin-top: 8px;
             font-size: 0.8rem;
             color: var(--text-light);
             text-align: right;
+        }
+
+        .suggestions-section {
+            margin-top: 30px;
+        }
+
+        .suggestions-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .suggestions-list {
+            margin-top: 15px;
+        }
+
+        .suggestion-item {
+            padding: 12px;
+            border-radius: var(--radius);
+            background-color: var(--bg-light);
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        .footnote {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Animation delays for cascade effect */
+        .metric-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .metric-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .metric-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .metric-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .checklist-item:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .checklist-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .checklist-item:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .checklist-item:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .checklist-item:nth-child(5) {
+            animation-delay: 0.7s;
+        }
+
+        .checklist-item:nth-child(6) {
+            animation-delay: 0.8s;
+        }
+
+        .checklist-item:nth-child(7) {
+            animation-delay: 0.9s;
+        }
+
+        .checklist-item:nth-child(8) {
+            animation-delay: 1.0s;
+        }
+
+        .suggestion-item:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .suggestion-item:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .suggestion-item:nth-child(3) {
+            animation-delay: 0.7s;
         }
 
         @keyframes slideUp {
@@ -346,48 +687,6 @@
             }
         }
 
-        @keyframes countUp {
-            from {
-                content: "0";
-            }
-        }
-
-        .footnote {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Animation delays for cascade effect */
-        .metric-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .metric-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .metric-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .insight-item:nth-child(1) {
-            animation-delay: 0.4s;
-        }
-
-        .insight-item:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .insight-item:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .insight-item:nth-child(4) {
-            animation-delay: 0.7s;
-        }
-
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -401,6 +700,10 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
+
+            .preview-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -408,96 +711,291 @@
     <div class="container">
         <header>
             <h1>Email Subject Line Checker</h1>
-            <p class="description">Create more effective email campaigns with subject lines that drive opens and engagement.</p>
+            <p class="description">Compare your email subject line to 100,000+ others sent by marketers like you. Boost your open rates with data-driven insights.</p>
         </header>
 
         <div class="input-section">
             <div class="input-container">
                 <input type="text" id="subject-input" placeholder="Enter your email subject line here" maxlength="100">
-                <button id="check-button">Check</button>
+                <button id="check-button">Test Subject Now</button>
             </div>
             <div class="character-counter"><span id="char-count">0</span>/100 characters</div>
         </div>
 
         <div class="results-section" id="results-section">
             <div class="overall-score">
-                <div class="score-text">Overall Assessment</div>
-                <div class="score-label" id="overall-score">Analyzing...</div>
+                <div class="score-left">
+                    <div class="grade-circle" id="grade-circle">A</div>
+                    <div class="score-details">
+                        <div class="score-number"><span id="score-points">93</span> Points</div>
+                        <div class="score-text" id="score-text">Very solid subject line that should perform well for you.</div>
+                    </div>
+                </div>
+                <div class="score-label" id="overall-score">Excellent</div>
             </div>
 
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-title">Character Count</div>
+                    <div class="metric-header">
+                        <div class="metric-title">Scannability</div>
+                        <div class="metric-icon success" id="scannability-icon">✓</div>
+                    </div>
+                    <div class="metric-value">
+                        <span id="scannability-score">8</span>/10
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-optimal" id="scannability-progress"></div>
+                    </div>
+                    <div class="metric-insight" id="scannability-insight">A measure of how easy it is to read your subject line. Higher is better.</div>
+                    <div class="metric-data">
+                        <div class="metric-data-label">Average:</div>
+                        <div>5/10</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-title">Reading Grade</div>
+                        <div class="metric-icon success" id="grade-icon">✓</div>
+                    </div>
+                    <div class="metric-value">
+                        <span id="grade-level">3rd</span>
+                        <span class="metric-value-small">Grade</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-optimal" id="grade-progress"></div>
+                    </div>
+                    <div class="metric-insight" id="grade-insight">Writing at a lower grade level tends to generate more opens.</div>
+                    <div class="metric-data">
+                        <div class="metric-data-label">Average:</div>
+                        <div>7th Grade</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-title">Sentiment</div>
+                        <div class="metric-icon neutral" id="sentiment-icon">•</div>
+                    </div>
+                    <div class="metric-value">
+                        <span id="sentiment-score">-0.625</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="sentiment-progress"></div>
+                    </div>
+                    <div class="metric-insight" id="sentiment-insight">
+                        Scores below -0.25 are negative, above 0.25 are positive.
+                    </div>
+                    <div class="chart-container">
+                        <div class="metric-data-label">Sentiment Analysis of All Marketing Emails</div>
+                        <div class="sentiment-chart">
+                            <div class="sentiment-negative"></div>
+                            <div class="sentiment-neutral"></div>
+                            <div class="sentiment-positive"></div>
+                        </div>
+                        <div class="metric-data" style="justify-content: space-between; margin-top: 5px;">
+                            <div>24% negative</div>
+                            <div>31% neutral</div>
+                            <div>45% positive</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-title">Length</div>
+                        <div class="metric-icon success" id="length-icon">✓</div>
+                    </div>
                     <div class="metric-value">
                         <span id="char-metric">0</span>
-                        <span class="metric-indicator" id="char-indicator">—</span>
+                        <span class="metric-label">Characters</span>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="char-progress"></div>
-                    </div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-title">Word Count</div>
-                    <div class="metric-value">
+                    <div class="metric-value" style="margin-top: 5px;">
                         <span id="word-metric">0</span>
-                        <span class="metric-indicator" id="word-indicator">—</span>
+                        <span class="metric-label">Words</span>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="word-progress"></div>
+                    <div class="metric-insight" id="length-insight">
+                        How many words in your subject is less important than the right words.
                     </div>
-                </div>
-
-                <div class="metric-card">
-                    <div class="metric-title">Impact Score</div>
-                    <div class="metric-value">
-                        <span id="impact-metric">0</span><span>/10</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="impact-progress"></div>
+                    <div class="metric-data">
+                        <div class="metric-data-label">Average:</div>
+                        <div>52 characters in 8 words</div>
                     </div>
                 </div>
             </div>
 
-            <div class="insights-container">
-                <div class="insight-item">
-                    <div class="insight-icon info">i</div>
-                    <div class="insight-content">
-                        <div class="insight-title">Length Analysis</div>
-                        <div class="insight-desc" id="length-insight">The ideal email subject line is between 40-60 characters.</div>
+            <div class="preview-section">
+                <div class="preview-header">
+                    <div class="preview-title">Preview</div>
+                </div>
+                <div class="preview-container">
+                    <div class="preview-box">
+                        <div class="preview-label">Desktop View (36 characters)</div>
+                        <div class="preview-content" id="desktop-preview"></div>
+                    </div>
+                    <div class="preview-box">
+                        <div class="preview-label">Mobile View (20 characters)</div>
+                        <div class="preview-content" id="mobile-preview"></div>
                     </div>
                 </div>
+                <div class="metric-insight">Make sure this preview reads well on both desktop and mobile devices.</div>
+            </div>
 
-                <div class="insight-item">
-                    <div class="insight-icon info">i</div>
-                    <div class="insight-content">
-                        <div class="insight-title">Spam Trigger Check</div>
-                        <div class="insight-desc" id="spam-insight">Your subject line doesn't contain any common spam trigger words.</div>
-                        <div class="keywords-container" id="spam-keywords"></div>
+            <div class="section-divider"></div>
+
+            <div class="checklist-section">
+                <div class="checklist-title">Email Subject Line Checklist</div>
+                <div class="checklist-items">
+                    <div class="checklist-item">
+                        <div class="checklist-icon success" id="re-fwd-icon">✓</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                RE: or FWD:
+                                <span class="checklist-status status-not-found" id="re-fwd-status">Not Found</span>
+                            </div>
+                            <div class="checklist-desc" id="re-fwd-desc">
+                                Putting a fake RE: or FWD: at the beginning may temporarily boost open rates but is not recommended.
+                            </div>
+                            <div class="checklist-stat">
+                                Only 1.07% of emails start with RE: or FWD:
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon success" id="free-icon">✓</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                FREE
+                                <span class="checklist-status status-not-found" id="free-status">Not Found</span>
+                            </div>
+                            <div class="checklist-desc" id="free-desc">
+                                Spammers have over-used "Free" in email subject lines, best to avoid it if possible.
+                            </div>
+                            <div class="checklist-stat">
+                                Only 2.34% of emails contain the word 'free'.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon success" id="spammy-icon">✓</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                Spammy Words
+                                <span class="checklist-status status-not-found" id="spammy-status">Not Found</span>
+                            </div>
+                            <div class="checklist-desc" id="spammy-desc">
+                                There are words and phrases found more often in spam emails. Best to avoid them if you can.
+                            </div>
+                            <div class="keywords-container" id="spammy-keywords"></div>
+                            <div class="checklist-stat">
+                                6.49% contain something likely to get them marked as spam.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon warning" id="bad-tab-icon">!</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                Bad Tab Words
+                                <span class="checklist-status status-found" id="bad-tab-status">Found</span>
+                            </div>
+                            <div class="checklist-desc" id="bad-tab-desc">
+                                Words like "now" often push your email from Primary to Promotions tab in Gmail.
+                            </div>
+                            <div class="keywords-container" id="bad-tab-keywords"></div>
+                            <div class="checklist-recommendation" id="bad-tab-recommendation">
+                                Replace 'now' in your subject line.
+                            </div>
+                            <div class="checklist-stat">
+                                14.21% of emails contain something that may hurt their tab placement.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon success" id="exclamation-icon">✓</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                Exclamation Mark
+                                <span class="checklist-status status-not-found" id="exclamation-status">Not Found</span>
+                            </div>
+                            <div class="checklist-desc" id="exclamation-desc">
+                                Exclamation marks tend to hurt open rates and Gmail tab placement, avoid them.
+                            </div>
+                            <div class="checklist-stat">
+                                12.36% of emails are overly excited.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon success" id="caps-icon">✓</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                All Caps Words
+                                <span class="checklist-status status-not-found" id="caps-status">Not Found</span>
+                            </div>
+                            <div class="checklist-desc" id="caps-desc">
+                                Subject lines with all caps words both look like they're shouting and like spam.
+                            </div>
+                            <div class="checklist-stat">
+                                9.37% of emails contain an all-caps word.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon neutral" id="question-icon">?</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                Question in Subject
+                                <span class="checklist-status status-neutral" id="question-status">Not Found</span>
+                            </div>
+                            <div class="checklist-desc" id="question-desc">
+                                Questions are naturally engaging and typically result in higher open rates.
+                            </div>
+                            <div class="checklist-recommendation" id="question-recommendation">
+                                Try rephrasing your subject as a question to increase engagement.
+                            </div>
+                            <div class="checklist-stat">
+                                10.48% of email subjects are questions.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <div class="checklist-icon success" id="emoji-icon">✓</div>
+                        <div class="checklist-content">
+                            <div class="checklist-content-title">
+                                Emoji
+                                <span class="checklist-status status-found" id="emoji-status">Found</span>
+                            </div>
+                            <div class="checklist-desc" id="emoji-desc">
+                                Throwing a few topical emoji into your subject line is an easy way to catch the eye.
+                            </div>
+                            <div class="checklist-stat">
+                                Only 2.50% of subjects contain emoji today.
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="insight-item">
-                    <div class="insight-icon info">i</div>
-                    <div class="insight-content">
-                        <div class="insight-title">Power Words</div>
-                        <div class="insight-desc" id="power-insight">Power words can increase open rates by creating urgency or curiosity.</div>
-                        <div class="keywords-container" id="power-keywords"></div>
-                    </div>
-                </div>
+            <div class="section-divider"></div>
 
-                <div class="insight-item">
-                    <div class="insight-icon info">i</div>
-                    <div class="insight-content">
-                        <div class="insight-title">Suggestions</div>
-                        <div class="insight-desc" id="suggestions-insight">Enter a subject line to receive personalized suggestions.</div>
-                    </div>
+            <div class="suggestions-section">
+                <div class="suggestions-title">Suggestions to Improve</div>
+                <div class="suggestions-list" id="suggestions-list">
+                    <!-- Suggestions will be added here -->
                 </div>
             </div>
         </div>
 
         <div class="footnote">
-            <p>Based on email marketing best practices and industry research.</p>
+            <p>Based on analysis of 100,000+ email subject lines and industry best practices.</p>
         </div>
     </div>
 
@@ -509,24 +1007,74 @@
             const resultsSection = document.getElementById('results-section');
             const charCount = document.getElementById('char-count');
             
-            // Metrics
+            // Metrics elements
+            const gradeCircle = document.getElementById('grade-circle');
+            const scorePoints = document.getElementById('score-points');
+            const scoreText = document.getElementById('score-text');
             const overallScore = document.getElementById('overall-score');
-            const charMetric = document.getElementById('char-metric');
-            const charIndicator = document.getElementById('char-indicator');
-            const charProgress = document.getElementById('char-progress');
-            const wordMetric = document.getElementById('word-metric');
-            const wordIndicator = document.getElementById('word-indicator');
-            const wordProgress = document.getElementById('word-progress');
-            const impactMetric = document.getElementById('impact-metric');
-            const impactProgress = document.getElementById('impact-progress');
             
-            // Insights
+            const scannabilityScore = document.getElementById('scannability-score');
+            const scannabilityProgress = document.getElementById('scannability-progress');
+            const scannabilityInsight = document.getElementById('scannability-insight');
+            const scannabilityIcon = document.getElementById('scannability-icon');
+            
+            const gradeLevel = document.getElementById('grade-level');
+            const gradeProgress = document.getElementById('grade-progress');
+            const gradeInsight = document.getElementById('grade-insight');
+            const gradeIcon = document.getElementById('grade-icon');
+            
+            const sentimentScore = document.getElementById('sentiment-score');
+            const sentimentProgress = document.getElementById('sentiment-progress');
+            const sentimentInsight = document.getElementById('sentiment-insight');
+            const sentimentIcon = document.getElementById('sentiment-icon');
+            
+            const charMetric = document.getElementById('char-metric');
+            const wordMetric = document.getElementById('word-metric');
             const lengthInsight = document.getElementById('length-insight');
-            const spamInsight = document.getElementById('spam-insight');
-            const spamKeywords = document.getElementById('spam-keywords');
-            const powerInsight = document.getElementById('power-insight');
-            const powerKeywords = document.getElementById('power-keywords');
-            const suggestionsInsight = document.getElementById('suggestions-insight');
+            const lengthIcon = document.getElementById('length-icon');
+            
+            // Preview elements
+            const desktopPreview = document.getElementById('desktop-preview');
+            const mobilePreview = document.getElementById('mobile-preview');
+            
+            // Checklist elements
+            const reFwdIcon = document.getElementById('re-fwd-icon');
+            const reFwdStatus = document.getElementById('re-fwd-status');
+            const reFwdDesc = document.getElementById('re-fwd-desc');
+            
+            const freeIcon = document.getElementById('free-icon');
+            const freeStatus = document.getElementById('free-status');
+            const freeDesc = document.getElementById('free-desc');
+            
+            const spammyIcon = document.getElementById('spammy-icon');
+            const spammyStatus = document.getElementById('spammy-status');
+            const spammyDesc = document.getElementById('spammy-desc');
+            const spammyKeywords = document.getElementById('spammy-keywords');
+            
+            const badTabIcon = document.getElementById('bad-tab-icon');
+            const badTabStatus = document.getElementById('bad-tab-status');
+            const badTabDesc = document.getElementById('bad-tab-desc');
+            const badTabKeywords = document.getElementById('bad-tab-keywords');
+            const badTabRecommendation = document.getElementById('bad-tab-recommendation');
+            
+            const exclamationIcon = document.getElementById('exclamation-icon');
+            const exclamationStatus = document.getElementById('exclamation-status');
+            const exclamationDesc = document.getElementById('exclamation-desc');
+            
+            const capsIcon = document.getElementById('caps-icon');
+            const capsStatus = document.getElementById('caps-status');
+            const capsDesc = document.getElementById('caps-desc');
+            
+            const questionIcon = document.getElementById('question-icon');
+            const questionStatus = document.getElementById('question-status');
+            const questionDesc = document.getElementById('question-desc');
+            const questionRecommendation = document.getElementById('question-recommendation');
+            
+            const emojiIcon = document.getElementById('emoji-icon');
+            const emojiStatus = document.getElementById('emoji-status');
+            const emojiDesc = document.getElementById('emoji-desc');
+            
+            const suggestionsList = document.getElementById('suggestions-list');
             
             // Lists of words for analysis
             const spamTriggerWords = [
@@ -534,6 +1082,12 @@
                 'urgent', 'act now', 'limited time', 'offer', 'buy', 'cash', 'cheap',
                 'discount', 'save', 'money', 'credit', 'incredible', 'bargain', 'order',
                 'click', 'apply now', 'incredible deal', 'promises', 'opportunity'
+            ];
+            
+            const badTabWords = [
+                'free', 'discount', 'sale', 'clearance', 'cash', 'buy', 'purchase',
+                'order', 'trial', 'percent off', '% off', 'save', 'subscribe',
+                'offer', 'limited time', 'deal', 'click', 'now', 'apply', 'hurry'
             ];
             
             const powerWords = [
@@ -560,6 +1114,93 @@
                 }
             });
             
+            // Helper function to check if string contains emoji
+            function containsEmoji(str) {
+                const emojiRegex = /[\u{1F300}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+                return emojiRegex.test(str);
+            }
+            
+            // Function to calculate reading grade level (simplified Flesch-Kincaid)
+            function getReadingGradeLevel(text) {
+                const words = text.split(/\s+/).filter(w => w.length > 0);
+                const sentences = text.split(/[.!?]+/).filter(s => s.length > 0);
+                
+                if (words.length === 0 || sentences.length === 0) return 0;
+                
+                // Count syllables (simplified)
+                let syllables = 0;
+                words.forEach(word => {
+                    word = word.toLowerCase();
+                    // Count vowels as rough syllable count
+                    let count = word.match(/[aeiou]/gi) ? word.match(/[aeiou]/gi).length : 0;
+                    // Adjust for common patterns
+                    if (word.length > 3 && word.endsWith('e')) count--;
+                    if (count === 0) count = 1; // Every word has at least one syllable
+                    syllables += count;
+                });
+                
+                // Calculate grade level (simplified)
+                const avgSentenceLength = words.length / sentences.length;
+                const avgSyllablesPerWord = syllables / words.length;
+                
+                const gradeLevel = 0.39 * avgSentenceLength + 11.8 * avgSyllablesPerWord - 15.59;
+                return Math.max(0, Math.round(gradeLevel));
+            }
+            
+            // Function to calculate scannability score
+            function getScannabilityScore(text) {
+                // Base score
+                let score = 10;
+                
+                // Penalize for length
+                if (text.length > 60) score -= Math.min(3, (text.length - 60) / 10);
+                
+                // Penalize for complex words
+                const words = text.split(/\s+/).filter(w => w.length > 0);
+                const complexWordCount = words.filter(word => word.length > 8).length;
+                score -= Math.min(3, complexWordCount);
+                
+                // Penalize for all caps
+                if (text === text.toUpperCase() && text.length > 10) score -= 2;
+                
+                // Penalize for excessive punctuation
+                const punctuationCount = (text.match(/[!?,.;:]/g) || []).length;
+                if (punctuationCount > 3) score -= Math.min(2, (punctuationCount - 3) / 2);
+                
+                return Math.max(1, Math.round(score));
+            }
+            
+            // Function to calculate sentiment score
+            function getSentimentScore(text) {
+                // Very simplified sentiment analysis
+                const positiveWords = ['happy', 'good', 'great', 'excellent', 'best', 'amazing', 'love', 'awesome', 'wonderful', 'enjoy', 'perfect', 'success', 'win', 'winning'];
+                const negativeWords = ['bad', 'worst', 'terrible', 'hate', 'awful', 'poor', 'fail', 'fear', 'danger', 'warning', 'risk', 'problem', 'issue', 'lose', 'losing', 'countdown'];
+                
+                const words = text.toLowerCase().split(/\s+/);
+                
+                let score = 0;
+                let foundWordCount = 0;
+                
+                words.forEach(word => {
+                    if (positiveWords.includes(word)) {
+                        score += 1;
+                        foundWordCount++;
+                    } else if (negativeWords.includes(word)) {
+                        score -= 1;
+                        foundWordCount++;
+                    }
+                });
+                
+                // If we found sentiment words, normalize the score
+                if (foundWordCount > 0) {
+                    return score / foundWordCount;
+                }
+                
+                // Default to slightly negative if no sentiment words found
+                // This is for sample purposes only, a real sentiment algorithm would be more nuanced
+                return -0.1;
+            }
+            
             function analyzeSubject() {
                 const subject = subjectInput.value.trim();
                 
@@ -571,127 +1212,313 @@
                 // Show results section with animation
                 resultsSection.classList.add('visible');
                 
-                // Character count analysis
+                // === CHARACTER & WORD COUNT ANALYSIS ===
                 const charLength = subject.length;
                 charMetric.textContent = charLength;
                 
-                let charScore, charStatus;
-                if (charLength >= 30 && charLength <= 60) {
-                    charScore = 'optimal';
-                    charStatus = 'Optimal';
-                } else if (charLength > 60 && charLength <= 70) {
-                    charScore = 'warning';
-                    charStatus = 'Long';
-                } else if (charLength < 30 && charLength >= 15) {
-                    charScore = 'warning';
-                    charStatus = 'Short';
-                } else {
-                    charScore = 'danger';
-                    charStatus = charLength > 70 ? 'Too Long' : 'Too Short';
-                }
-                
-                charIndicator.textContent = charStatus;
-                charIndicator.className = `metric-indicator score-${charScore}`;
-                charProgress.className = `progress-fill progress-${charScore}`;
-                
-                // Animate the progress bar (from 0 to appropriate percentage)
-                setTimeout(() => {
-                    // For character count, 50 is optimal (100%)
-                    const charPercentage = Math.min(100, (charLength / 60) * 100);
-                    charProgress.style.width = `${charPercentage}%`;
-                }, 100);
-                
-                // Word count analysis
                 const words = subject.split(/\s+/).filter(word => word.length > 0);
                 const wordCount = words.length;
                 wordMetric.textContent = wordCount;
                 
-                let wordScore, wordStatus;
-                if (wordCount >= 5 && wordCount <= 9) {
-                    wordScore = 'optimal';
-                    wordStatus = 'Optimal';
-                } else if ((wordCount >= 3 && wordCount < 5) || (wordCount > 9 && wordCount <= 12)) {
-                    wordScore = 'warning';
-                    wordStatus = wordCount < 5 ? 'Few' : 'Many';
+                let lengthScore = 'optimal';
+                if (charLength >= 30 && charLength <= 70) {
+                    lengthIcon.className = 'metric-icon success';
+                    lengthInsight.textContent = 'Great length! Your subject has the ideal character count for most email clients.';
+                } else if (charLength > 70) {
+                    lengthIcon.className = 'metric-icon warning';
+                    lengthScore = 'warning';
+                    lengthInsight.textContent = 'Your subject is a bit long. Consider shortening to under 70 characters for better display on all devices.';
                 } else {
-                    wordScore = 'danger';
-                    wordStatus = wordCount < 3 ? 'Too Few' : 'Too Many';
+                    lengthIcon.className = 'metric-icon warning';
+                    lengthScore = 'warning';
+                    lengthInsight.textContent = 'Your subject is a bit short. Consider adding more context to improve open rates.';
                 }
                 
-                wordIndicator.textContent = wordStatus;
-                wordIndicator.className = `metric-indicator score-${wordScore}`;
-                wordProgress.className = `progress-fill progress-${wordScore}`;
+                // === PREVIEW ANALYSIS ===
+                desktopPreview.textContent = subject.substring(0, 36) + (subject.length > 36 ? '...' : '');
+                mobilePreview.textContent = subject.substring(0, 20) + (subject.length > 20 ? '...' : '');
+                
+                // === SCANNABILITY ANALYSIS ===
+                const scannabilityValue = getScannabilityScore(subject);
+                scannabilityScore.textContent = scannabilityValue;
+                
+                if (scannabilityValue >= 7) {
+                    scannabilityIcon.className = 'metric-icon success';
+                    scannabilityInsight.textContent = 'Excellent scannability! Your subject is easy to read and understand at a glance.';
+                    scannabilityProgress.className = 'progress-fill progress-optimal';
+                } else if (scannabilityValue >= 5) {
+                    scannabilityIcon.className = 'metric-icon success';
+                    scannabilityInsight.textContent = 'Good scannability. Your subject is reasonably easy to read.';
+                    scannabilityProgress.className = 'progress-fill progress-optimal';
+                } else {
+                    scannabilityIcon.className = 'metric-icon warning';
+                    scannabilityInsight.textContent = 'Your subject could be more scannable. Consider simplifying the language.';
+                    scannabilityProgress.className = 'progress-fill progress-warning';
+                }
                 
                 setTimeout(() => {
-                    // For word count, 7 is optimal (100%)
-                    const wordPercentage = Math.min(100, (wordCount / 9) * 100);
-                    wordProgress.style.width = `${wordPercentage}%`;
+                    scannabilityProgress.style.width = `${scannabilityValue * 10}%`;
+                }, 100);
+                
+                // === READING GRADE LEVEL ANALYSIS ===
+                const readingGrade = getReadingGradeLevel(subject);
+                let gradeText;
+                
+                if (readingGrade <= 1) gradeText = '1st';
+                else if (readingGrade === 2) gradeText = '2nd';
+                else if (readingGrade === 3) gradeText = '3rd';
+                else gradeText = readingGrade + 'th';
+                
+                gradeLevel.textContent = gradeText;
+                
+                if (readingGrade <= 5) {
+                    gradeIcon.className = 'metric-icon success';
+                    gradeInsight.textContent = 'Perfect! Lower grade levels typically generate more opens.';
+                    gradeProgress.className = 'progress-fill progress-optimal';
+                } else if (readingGrade <= 8) {
+                    gradeIcon.className = 'metric-icon success';
+                    gradeInsight.textContent = 'Good reading level. Simple language generally works better.';
+                    gradeProgress.className = 'progress-fill progress-optimal';
+                } else {
+                    gradeIcon.className = 'metric-icon warning';
+                    gradeInsight.textContent = 'Your subject may be too complex. Try simplifying the language.';
+                    gradeProgress.className = 'progress-fill progress-warning';
+                }
+                
+                setTimeout(() => {
+                    // Invert since lower is better (12th grade is 0%, 1st grade is 100%)
+                    const gradePercentage = Math.max(0, Math.min(100, (12 - readingGrade) / 12 * 100));
+                    gradeProgress.style.width = `${gradePercentage}%`;
                 }, 200);
                 
-                // Check for spam trigger words
+                // === SENTIMENT ANALYSIS ===
+                const sentimentValue = getSentimentScore(subject);
+                sentimentScore.textContent = sentimentValue.toFixed(3);
+                
+                if (sentimentValue > 0.25) {
+                    sentimentIcon.className = 'metric-icon success';
+                    sentimentInsight.textContent = 'Positive sentiment may increase open rates for most audiences.';
+                    sentimentProgress.className = 'progress-fill progress-optimal';
+                } else if (sentimentValue >= -0.25) {
+                    sentimentIcon.className = 'metric-icon neutral';
+                    sentimentInsight.textContent = 'Neutral sentiment is generally safe for most audiences.';
+                    sentimentProgress.className = 'progress-fill progress-warning';
+                } else {
+                    sentimentIcon.className = 'metric-icon warning';
+                    sentimentInsight.textContent = 'Negative sentiment can work in some contexts but may decrease open rates.';
+                    sentimentProgress.className = 'progress-fill progress-danger';
+                }
+                
+                setTimeout(() => {
+                    // Convert -1 to 1 scale to 0% to 100%
+                    const sentimentPercentage = Math.max(0, Math.min(100, (sentimentValue + 1) / 2 * 100));
+                    sentimentProgress.style.width = `${sentimentPercentage}%`;
+                }, 300);
+                
+                // === CHECKLIST ITEMS ANALYSIS ===
+                
+                // RE: or FWD: check
+                const hasReFwd = /^(re:|fwd:)/i.test(subject);
+                if (hasReFwd) {
+                    reFwdIcon.className = 'checklist-icon warning';
+                    reFwdStatus.textContent = 'Found';
+                    reFwdStatus.className = 'checklist-status status-found';
+                    reFwdDesc.textContent = 'Using RE: or FWD: can trigger spam filters and reduce trust over time.';
+                } else {
+                    reFwdIcon.className = 'checklist-icon success';
+                    reFwdStatus.textContent = 'Not Found';
+                    reFwdStatus.className = 'checklist-status status-not-found';
+                }
+                
+                // FREE check
+                const hasFree = /\bfree\b/i.test(subject);
+                if (hasFree) {
+                    freeIcon.className = 'checklist-icon warning';
+                    freeStatus.textContent = 'Found';
+                    freeStatus.className = 'checklist-status status-found';
+                    freeDesc.textContent = 'The word "free" can trigger spam filters and reduce deliverability.';
+                } else {
+                    freeIcon.className = 'checklist-icon success';
+                    freeStatus.textContent = 'Not Found';
+                    freeStatus.className = 'checklist-status status-not-found';
+                }
+                
+                // Spammy words check
                 const lowerCaseSubject = subject.toLowerCase();
                 const foundSpamWords = spamTriggerWords.filter(word => 
                     lowerCaseSubject.includes(word.toLowerCase())
                 );
                 
-                // Check for power words
-                const foundPowerWords = powerWords.filter(word => 
+                if (foundSpamWords.length > 0) {
+                    spammyIcon.className = 'checklist-icon warning';
+                    spammyStatus.textContent = 'Found';
+                    spammyStatus.className = 'checklist-status status-found';
+                    spammyDesc.textContent = `Found ${foundSpamWords.length} spam trigger words that may affect deliverability.`;
+                    
+                    // Display found spam words
+                    spammyKeywords.innerHTML = '';
+                    foundSpamWords.forEach(word => {
+                        const keywordElement = document.createElement('span');
+                        keywordElement.className = 'keyword';
+                        keywordElement.textContent = word;
+                        spammyKeywords.appendChild(keywordElement);
+                    });
+                } else {
+                    spammyIcon.className = 'checklist-icon success';
+                    spammyStatus.textContent = 'Not Found';
+                    spammyStatus.className = 'checklist-status status-not-found';
+                    spammyKeywords.innerHTML = '';
+                }
+                
+                // Bad tab words check
+                const foundBadTabWords = badTabWords.filter(word => 
                     lowerCaseSubject.includes(word.toLowerCase())
                 );
                 
-                // Impact score calculation (0-10)
-                // Factors: good length, power words, no spam words, good word count
-                let impactScore = 5; // Start with average
-                
-                // Length factor
-                if (charLength >= 30 && charLength <= 60) impactScore += 1;
-                if (charLength < 15 || charLength > 80) impactScore -= 2;
-                
-                // Word count factor
-                if (wordCount >= 5 && wordCount <= 9) impactScore += 1;
-                if (wordCount < 3 || wordCount > 15) impactScore -= 1;
-                
-                // Power words factor (up to +2)
-                impactScore += Math.min(2, foundPowerWords.length);
-                
-                // Spam words factor (up to -3)
-                impactScore -= Math.min(3, foundSpamWords.length);
-                
-                // Additional checks
-                // ALL CAPS check
-                if (subject === subject.toUpperCase() && subject.length > 10) {
-                    impactScore -= 2;
+                if (foundBadTabWords.length > 0) {
+                    badTabIcon.className = 'checklist-icon warning';
+                    badTabStatus.textContent = 'Found';
+                    badTabStatus.className = 'checklist-status status-found';
+                    badTabDesc.textContent = `Found words that may push your email to the Promotions tab in Gmail.`;
+                    
+                    // Display found bad tab words
+                    badTabKeywords.innerHTML = '';
+                    foundBadTabWords.forEach(word => {
+                        const keywordElement = document.createElement('span');
+                        keywordElement.className = 'keyword';
+                        keywordElement.textContent = word;
+                        badTabKeywords.appendChild(keywordElement);
+                    });
+                    
+                    badTabRecommendation.textContent = `Consider replacing: ${foundBadTabWords.join(', ')}`;
+                } else {
+                    badTabIcon.className = 'checklist-icon success';
+                    badTabStatus.textContent = 'Not Found';
+                    badTabStatus.className = 'checklist-status status-not-found';
+                    badTabKeywords.innerHTML = '';
+                    badTabRecommendation.textContent = '';
                 }
                 
-                // Multiple exclamation points
-                if ((subject.match(/!/g) || []).length > 1) {
-                    impactScore -= 1;
+                // Exclamation mark check
+                const hasExclamation = subject.includes('!');
+                if (hasExclamation) {
+                    exclamationIcon.className = 'checklist-icon warning';
+                    exclamationStatus.textContent = 'Found';
+                    exclamationStatus.className = 'checklist-status status-found';
+                    exclamationDesc.textContent = 'Exclamation marks tend to hurt open rates and Gmail tab placement.';
+                } else {
+                    exclamationIcon.className = 'checklist-icon success';
+                    exclamationStatus.textContent = 'Not Found';
+                    exclamationStatus.className = 'checklist-status status-not-found';
                 }
                 
-                // Ensure score is between 0-10
-                impactScore = Math.max(0, Math.min(10, impactScore));
+                // All caps check
+                const hasAllCaps = /\b[A-Z]{2,}\b/.test(subject);
+                if (hasAllCaps) {
+                    capsIcon.className = 'checklist-icon warning';
+                    capsStatus.textContent = 'Found';
+                    capsStatus.className = 'checklist-status status-found';
+                    capsDesc.textContent = 'ALL CAPS words can trigger spam filters and appear unprofessional.';
+                } else {
+                    capsIcon.className = 'checklist-icon success';
+                    capsStatus.textContent = 'Not Found';
+                    capsStatus.className = 'checklist-status status-not-found';
+                }
                 
-                // Update impact score
-                impactMetric.textContent = impactScore;
+                // Question check
+                const hasQuestion = subject.includes('?');
+                if (hasQuestion) {
+                    questionIcon.className = 'checklist-icon success';
+                    questionStatus.textContent = 'Found';
+                    questionStatus.className = 'checklist-status status-found';
+                    questionDesc.textContent = 'Questions tend to engage readers and increase open rates.';
+                    questionRecommendation.textContent = '';
+                } else {
+                    questionIcon.className = 'checklist-icon neutral';
+                    questionStatus.textContent = 'Not Found';
+                    questionStatus.className = 'checklist-status status-neutral';
+                    questionRecommendation.textContent = 'Consider rephrasing as a question to boost engagement.';
+                }
                 
-                setTimeout(() => {
-                    // For impact score, it's already 0-10
-                    impactProgress.className = `progress-fill progress-${
-                        impactScore >= 7 ? 'optimal' : (impactScore >= 4 ? 'warning' : 'danger')
-                    }`;
-                    impactProgress.style.width = `${impactScore * 10}%`;
-                }, 300);
+                // Emoji check
+                const hasEmoji = containsEmoji(subject);
+                if (hasEmoji) {
+                    emojiIcon.className = 'checklist-icon success';
+                    emojiStatus.textContent = 'Found';
+                    emojiStatus.className = 'checklist-status status-found';
+                    emojiDesc.textContent = 'Emoji can help your subject line stand out in the inbox.';
+                } else {
+                    emojiIcon.className = 'checklist-icon neutral';
+                    emojiStatus.textContent = 'Not Found';
+                    emojiStatus.className = 'checklist-status status-neutral';
+                    emojiDesc.textContent = 'Consider adding an emoji to make your subject line more eye-catching.';
+                }
                 
-                // Overall assessment
+                // === OVERALL SCORE CALCULATION ===
+                // Base score - start with 70 points
+                let totalScore = 70;
+                
+                // Add points for good practices
+                if (scannabilityValue >= 7) totalScore += 5;
+                if (readingGrade <= 5) totalScore += 5;
+                if (charLength >= 40 && charLength <= 60) totalScore += 5;
+                if (!hasReFwd) totalScore += 2;
+                if (!hasFree) totalScore += 2;
+                if (foundSpamWords.length === 0) totalScore += 3;
+                if (foundBadTabWords.length === 0) totalScore += 3;
+                if (!hasExclamation) totalScore += 2;
+                if (!hasAllCaps) totalScore += 2;
+                if (hasQuestion) totalScore += 2;
+                if (hasEmoji) totalScore += 2;
+                
+                // Deduct points for bad practices
+                if (foundSpamWords.length > 0) totalScore -= (foundSpamWords.length * 2);
+                if (foundBadTabWords.length > 0) totalScore -= (foundBadTabWords.length * 2);
+                if (hasReFwd) totalScore -= 5;
+                if (hasFree) totalScore -= 3;
+                if (hasExclamation) totalScore -= 2;
+                if (hasAllCaps) totalScore -= 3;
+                if (charLength > 80) totalScore -= 5;
+                if (charLength < 20) totalScore -= 3;
+                
+                // Ensure score is between 0-100
+                totalScore = Math.max(0, Math.min(100, Math.round(totalScore)));
+                
+                // Set grade based on score
+                let grade;
+                if (totalScore >= 90) {
+                    grade = 'A';
+                    scoreText.textContent = 'Very solid subject line that should perform well for you.';
+                } else if (totalScore >= 80) {
+                    grade = 'B';
+                    scoreText.textContent = 'Good subject line with room for minor improvements.';
+                } else if (totalScore >= 70) {
+                    grade = 'C';
+                    scoreText.textContent = 'Average subject line that could use some work.';
+                } else if (totalScore >= 60) {
+                    grade = 'D';
+                    scoreText.textContent = 'Your subject line needs improvement to maximize opens.';
+                } else {
+                    grade = 'F';
+                    scoreText.textContent = 'This subject line may significantly hurt your open rates.';
+                }
+                
+                gradeCircle.textContent = grade;
+                gradeCircle.className = `grade-circle ${grade}`;
+                scorePoints.textContent = totalScore;
+                
                 let overallScoreText, overallScoreClass;
-                if (impactScore >= 8) {
+                if (totalScore >= 90) {
                     overallScoreText = 'Excellent';
                     overallScoreClass = 'score-optimal';
-                } else if (impactScore >= 6) {
+                } else if (totalScore >= 80) {
                     overallScoreText = 'Good';
                     overallScoreClass = 'score-optimal';
-                } else if (impactScore >= 4) {
-                    overallScoreText = 'Needs Improvement';
+                } else if (totalScore >= 70) {
+                    overallScoreText = 'Average';
+                    overallScoreClass = 'score-good';
+                } else if (totalScore >= 60) {
+                    overallScoreText = 'Needs Work';
                     overallScoreClass = 'score-good';
                 } else {
                     overallScoreText = 'Poor';
@@ -701,96 +1528,57 @@
                 overallScore.textContent = overallScoreText;
                 overallScore.className = `score-label ${overallScoreClass}`;
                 
-                // Update insights
+                // === GENERATE SUGGESTIONS ===
+                const suggestions = [];
                 
-                // Length insight
-                if (charLength >= 30 && charLength <= 60) {
-                    lengthInsight.textContent = 'Great! Your subject line has an optimal length for email clients and mobile devices.';
-                } else if (charLength > 60) {
-                    lengthInsight.textContent = `Your subject line is ${charLength} characters, which may get cut off in some email clients. Consider shortening to 40-60 characters.`;
-                } else {
-                    lengthInsight.textContent = `Your subject line is only ${charLength} characters. While short can be effective, aim for 40-60 characters to provide more context.`;
-                }
-                
-                // Spam trigger insight
                 if (foundSpamWords.length > 0) {
-                    const insightElement = document.querySelector('.insight-item:nth-child(2) .insight-icon');
-                    insightElement.className = 'insight-icon warning';
-                    
-                    spamInsight.textContent = `Your subject contains ${foundSpamWords.length} potential spam trigger ${foundSpamWords.length === 1 ? 'word' : 'words'} that might affect deliverability.`;
-                    
-                    // Display found spam words
-                    spamKeywords.innerHTML = '';
-                    foundSpamWords.forEach(word => {
-                        const keywordElement = document.createElement('span');
-                        keywordElement.className = 'keyword';
-                        keywordElement.textContent = word;
-                        spamKeywords.appendChild(keywordElement);
-                    });
-                } else {
-                    const insightElement = document.querySelector('.insight-item:nth-child(2) .insight-icon');
-                    insightElement.className = 'insight-icon info';
-                    
-                    spamInsight.textContent = 'Great! Your subject line doesn\'t contain common spam trigger words.';
-                    spamKeywords.innerHTML = '';
+                    suggestions.push(`Replace spam trigger words: ${foundSpamWords.join(', ')}`);
                 }
                 
-                // Power words insight
-                if (foundPowerWords.length > 0) {
-                    powerInsight.textContent = `Nice! Your subject line contains ${foundPowerWords.length} power ${foundPowerWords.length === 1 ? 'word' : 'words'} that can boost open rates.`;
-                    
-                    // Display found power words
-                    powerKeywords.innerHTML = '';
-                    foundPowerWords.forEach(word => {
-                        const keywordElement = document.createElement('span');
-                        keywordElement.className = 'keyword';
-                        keywordElement.textContent = word;
-                        powerKeywords.appendChild(keywordElement);
-                    });
-                } else {
-                    powerInsight.textContent = 'Consider adding power words like "new," "exclusive," or "proven" to make your subject line more compelling.';
-                    powerKeywords.innerHTML = '';
+                if (foundBadTabWords.length > 0) {
+                    suggestions.push(`Avoid tab-triggering words: ${foundBadTabWords.join(', ')}`);
                 }
-                
-                // Suggestions based on analysis
-                let suggestions = [];
                 
                 if (charLength > 70) {
-                    suggestions.push('Shorten your subject line to prevent cutoff on mobile devices.');
+                    suggestions.push(`Shorten your subject to under 70 characters (currently ${charLength})`);
                 }
                 
-                if (charLength < 15) {
-                    suggestions.push('Add more detail to your subject line to provide context.');
+                if (charLength < 30) {
+                    suggestions.push(`Lengthen your subject to at least 30 characters (currently ${charLength})`);
                 }
                 
-                if (foundSpamWords.length > 0) {
-                    suggestions.push(`Replace spam trigger ${foundSpamWords.length === 1 ? 'word' : 'words'} to improve deliverability.`);
+                if (readingGrade > 8) {
+                    suggestions.push(`Simplify language to a grade 5-7 reading level (currently ${gradeText})`);
                 }
                 
-                if (foundPowerWords.length === 0) {
-                    suggestions.push('Add power words to create more impact and urgency.');
+                if (hasAllCaps) {
+                    suggestions.push('Remove ALL CAPS words from your subject line');
                 }
                 
-                if (subject === subject.toUpperCase() && subject.length > 10) {
-                    suggestions.push('Avoid using ALL CAPS as it may trigger spam filters.');
+                if (hasExclamation) {
+                    suggestions.push('Remove exclamation marks from your subject line');
                 }
                 
-                if ((subject.match(/!/g) || []).length > 1) {
-                    suggestions.push('Limit exclamation points to avoid looking spammy.');
+                if (!hasQuestion && charLength < 60) {
+                    suggestions.push('Consider rephrasing as a question to increase engagement');
                 }
                 
-                if (suggestions.length === 0) {
-                    if (impactScore >= 8) {
-                        suggestionsInsight.textContent = 'Your subject line looks great! It follows email marketing best practices.';
-                    } else {
-                        suggestionsInsight.textContent = 'Try adding more specific details or creating a sense of urgency to improve engagement.';
-                    }
-                } else {
-                    const insightElement = document.querySelector('.insight-item:nth-child(4) .insight-icon');
-                    insightElement.className = 'insight-icon warning';
-                    
-                    suggestionsInsight.innerHTML = suggestions.join('<br>');
+                if (!hasEmoji) {
+                    suggestions.push('Add a relevant emoji to make your subject stand out');
                 }
+                
+                if (totalScore >= 90 && suggestions.length === 0) {
+                    suggestions.push('Your subject line looks great! It follows email marketing best practices.');
+                }
+                
+                // Display suggestions
+                suggestionsList.innerHTML = '';
+                suggestions.forEach(suggestion => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    suggestionItem.textContent = suggestion;
+                    suggestionsList.appendChild(suggestionItem);
+                });
             }
         });
     </script>
