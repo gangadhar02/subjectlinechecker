@@ -213,72 +213,93 @@
 
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
 
         .metric-card {
-            background-color: var(--bg-light);
+            background-color: #f9fafb;
             border-radius: var(--radius);
-            padding: 16px;
+            padding: 24px;
             transform: translateY(40px);
             opacity: 0;
             animation: slideUp 0.5s ease forwards;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .metric-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         .metric-title {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--text-light);
+            color: #6b7280;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .metric-icon {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: white;
         }
 
         .metric-icon.success {
-            background-color: var(--success-color);
+            background-color: #4caf50;
         }
 
         .metric-icon.warning {
-            background-color: var(--warning-color);
+            background-color: #f59e0b;
         }
 
         .metric-icon.danger {
-            background-color: var(--danger-color);
+            background-color: #ef4444;
         }
 
         .metric-icon.neutral {
-            background-color: #9e9e9e;
+            background-color: #9ca3af;
         }
 
         .metric-value {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin: 12px 0;
         }
 
-        .metric-value-small {
-            font-size: 1rem;
+        .metric-grade {
+            font-size: 1.6rem;
+            color: #4b5563;
+            margin-left: 8px;
+        }
+
+        .metric-chars {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .metric-words {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .metric-label {
+            display: block;
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 400;
         }
 
         .metric-indicator {
@@ -289,10 +310,10 @@
         }
 
         .progress-bar {
-            height: 4px;
-            background-color: var(--border-color);
-            border-radius: 2px;
-            margin-top: 5px;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            margin: 12px 0 16px 0;
             position: relative;
             overflow: hidden;
         }
@@ -303,52 +324,46 @@
             left: 0;
             height: 100%;
             width: 0%;
-            border-radius: 2px;
+            border-radius: 4px;
             transition: width 1s ease;
         }
 
         .progress-optimal {
-            background-color: var(--success-color);
+            background-color: #4caf50;
         }
 
         .progress-warning {
-            background-color: var(--warning-color);
+            background-color: #f59e0b;
         }
 
         .progress-danger {
-            background-color: var(--danger-color);
-        }
-
-        .metric-label {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 5px;
+            background-color: #ef4444;
         }
 
         .metric-insight {
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: var(--text-light);
+            margin: 16px 0;
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.5;
         }
 
         .metric-data {
             display: flex;
             align-items: center;
-            margin-top: 8px;
+            margin-top: 16px;
         }
 
         .metric-data-label {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-right: 5px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-right: 8px;
         }
 
         .preview-section {
             margin-top: 20px;
-            background-color: var(--bg-light);
+            background-color: #f9fafb;
             border-radius: var(--radius);
-            padding: 16px;
+            padding: 24px;
             transform: translateY(40px);
             opacity: 0;
             animation: slideUp 0.5s ease forwards;
@@ -356,48 +371,174 @@
         }
 
         .preview-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .preview-title {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--text-light);
+            color: #6b7280;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preview-target {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 16px 0;
+            font-size: 0.95rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+        }
+
+        .preview-icon {
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
 
         .preview-container {
             display: flex;
             gap: 20px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
-        .preview-box {
+        .browser-preview, .mobile-preview {
             flex: 1;
-            min-width: 200px;
+            min-width: 280px;
             background-color: white;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 12px;
-        }
-
-        .preview-label {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-bottom: 5px;
-        }
-
-        .preview-content {
-            font-size: 0.9rem;
-            white-space: nowrap;
+            border-radius: 8px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .browser-chrome {
+            background: linear-gradient(to bottom, #f2f2f2, #e5e5e5);
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .browser-dot.red {
+            background-color: #ff5f56;
+        }
+
+        .browser-dot.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .browser-dot.green {
+            background-color: #27c93f;
+        }
+
+        .browser-nav {
+            margin-left: 16px;
+            display: flex;
+            gap: 12px;
+            color: #999;
+        }
+
+        .email-interface {
+            display: flex;
+            height: 220px;
+        }
+
+        .email-sidebar {
+            width: 100px;
+            border-right: 1px solid #eaeaea;
+            padding: 8px 0;
+        }
+
+        .sidebar-item {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .sidebar-item.active {
+            background-color: #f5f5f5;
+            border-left: 3px solid #db4437;
+        }
+
+        .email-list {
+            flex: 1;
+            padding: 8px 0;
+        }
+
+        .email-item {
+            display: flex;
+            padding: 12px 16px;
+            gap: 12px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .email-item.faded {
+            opacity: 0.4;
+        }
+
+        .email-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #eaeaea;
+        }
+
+        .email-content {
+            flex: 1;
+        }
+
+        .email-subject {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .email-line {
+            height: 12px;
+            width: 100%;
+            background-color: #eaeaea;
             border-radius: 4px;
-            background-color: var(--bg-light);
+            margin-bottom: 4px;
+        }
+
+        .email-line.small {
+            width: 70%;
+        }
+
+        .mobile-frame {
+            background-color: #eaeaea;
+            border-radius: 24px;
+            padding: 15px 8px;
+            position: relative;
+        }
+
+        .mobile-notch {
+            width: 60px;
+            height: 12px;
+            background-color: #d1d1d1;
+            border-radius: 6px;
+            margin: 0 auto 15px;
+        }
+
+        .email-mobile-interface {
+            background-color: white;
+            border-radius: 8px;
+            height: 220px;
+            overflow: hidden;
         }
 
         .section-divider {
@@ -527,27 +668,54 @@
             padding: 10px;
         }
 
+        .sentiment-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #374151;
+        }
+
+        .sentiment-analysis {
+            background-color: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        .sentiment-title {
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
         .sentiment-chart {
             display: flex;
-            height: 20px;
-            border-radius: var(--radius);
+            height: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-bottom: 8px;
         }
 
         .sentiment-negative {
-            background-color: var(--danger-color);
+            background-color: #ef4444;
             flex: 24;
         }
 
         .sentiment-neutral {
-            background-color: #9e9e9e;
+            background-color: #9ca3af;
             flex: 31;
         }
 
         .sentiment-positive {
-            background-color: var(--success-color);
+            background-color: #4caf50;
             flex: 45;
+        }
+        
+        .sentiment-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #4b5563;
         }
 
         .keywords-container {
@@ -741,12 +909,12 @@
                         <div class="metric-icon success" id="scannability-icon">✓</div>
                     </div>
                     <div class="metric-value">
-                        <span id="scannability-score">8</span>/10
+                        <span id="scannability-score">9</span> /10
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill progress-optimal" id="scannability-progress"></div>
+                        <div class="progress-fill progress-optimal" id="scannability-progress" style="width: 90%"></div>
                     </div>
-                    <div class="metric-insight" id="scannability-insight">A measure of how easy it is to read your subject line. Higher is better.</div>
+                    <div class="metric-insight" id="scannability-insight">Excellent scannability! Your subject is easy to read and understand at a glance.</div>
                     <div class="metric-data">
                         <div class="metric-data-label">Average:</div>
                         <div>5/10</div>
@@ -756,16 +924,16 @@
                 <div class="metric-card">
                     <div class="metric-header">
                         <div class="metric-title">Reading Grade</div>
-                        <div class="metric-icon success" id="grade-icon">✓</div>
+                        <div class="metric-icon warning" id="grade-icon">✓</div>
                     </div>
                     <div class="metric-value">
-                        <span id="grade-level">3rd</span>
-                        <span class="metric-value-small">Grade</span>
+                        <span id="grade-level">10th</span>
+                        <span class="metric-grade">Grade</span>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill progress-optimal" id="grade-progress"></div>
+                        <div class="progress-fill progress-warning" id="grade-progress" style="width: 20%"></div>
                     </div>
-                    <div class="metric-insight" id="grade-insight">Writing at a lower grade level tends to generate more opens.</div>
+                    <div class="metric-insight" id="grade-insight">Your subject may be too complex. Try simplifying the language.</div>
                     <div class="metric-data">
                         <div class="metric-data-label">Average:</div>
                         <div>7th Grade</div>
@@ -777,23 +945,23 @@
                         <div class="metric-title">Sentiment</div>
                         <div class="metric-icon neutral" id="sentiment-icon">•</div>
                     </div>
-                    <div class="metric-value">
-                        <span id="sentiment-score">-0.625</span>
+                    <div class="metric-value sentiment-value">
+                        <span id="sentiment-score">-0.100</span>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" id="sentiment-progress"></div>
+                        <div class="progress-fill progress-warning" id="sentiment-progress" style="width: 45%"></div>
                     </div>
                     <div class="metric-insight" id="sentiment-insight">
-                        Scores below -0.25 are negative, above 0.25 are positive.
+                        Neutral sentiment is generally safe for most audiences.
                     </div>
-                    <div class="chart-container">
-                        <div class="metric-data-label">Sentiment Analysis of All Marketing Emails</div>
+                    <div class="sentiment-analysis">
+                        <div class="sentiment-title">Sentiment Analysis of All Marketing Emails</div>
                         <div class="sentiment-chart">
                             <div class="sentiment-negative"></div>
                             <div class="sentiment-neutral"></div>
                             <div class="sentiment-positive"></div>
                         </div>
-                        <div class="metric-data" style="justify-content: space-between; margin-top: 5px;">
+                        <div class="sentiment-labels">
                             <div>24% negative</div>
                             <div>31% neutral</div>
                             <div>45% positive</div>
@@ -806,16 +974,16 @@
                         <div class="metric-title">Length</div>
                         <div class="metric-icon success" id="length-icon">✓</div>
                     </div>
-                    <div class="metric-value">
-                        <span id="char-metric">0</span>
-                        <span class="metric-label">Characters</span>
+                    <div style="display: flex; align-items: baseline;">
+                        <span class="metric-chars" id="char-metric">56</span>
+                        <span class="metric-label" style="margin-left: 8px;">Characters</span>
                     </div>
-                    <div class="metric-value" style="margin-top: 5px;">
-                        <span id="word-metric">0</span>
-                        <span class="metric-label">Words</span>
+                    <div style="display: flex; align-items: baseline; margin-top: 12px;">
+                        <span class="metric-words" id="word-metric">8</span>
+                        <span class="metric-label" style="margin-left: 8px;">Words</span>
                     </div>
-                    <div class="metric-insight" id="length-insight">
-                        How many words in your subject is less important than the right words.
+                    <div class="metric-insight" id="length-insight" style="margin-top: 16px;">
+                        Great length! Your subject has the ideal character count for most email clients.
                     </div>
                     <div class="metric-data">
                         <div class="metric-data-label">Average:</div>
@@ -826,19 +994,87 @@
 
             <div class="preview-section">
                 <div class="preview-header">
-                    <div class="preview-title">Preview</div>
+                    <div class="preview-title">PREVIEW</div>
                 </div>
+                <div class="metric-insight">Make sure this preview reads well on Desktop and mobile.</div>
+                
+                <div class="preview-target">
+                    <span class="preview-icon">📄</span> Target: 36 characters for desktop; 20 characters for mobile
+                </div>
+                
                 <div class="preview-container">
-                    <div class="preview-box">
-                        <div class="preview-label">Desktop View (36 characters)</div>
-                        <div class="preview-content" id="desktop-preview"></div>
+                    <div class="browser-preview">
+                        <div class="browser-chrome">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="browser-nav">
+                                <span class="browser-arrow">←</span>
+                                <span class="browser-arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="email-interface">
+                            <div class="email-sidebar">
+                                <div class="sidebar-item active">Inbox</div>
+                                <div class="sidebar-item">Starred</div>
+                                <div class="sidebar-item">Sent Mail</div>
+                                <div class="sidebar-item">Drafts</div>
+                            </div>
+                            <div class="email-list">
+                                <div class="email-item faded">
+                                    <div class="email-avatar"></div>
+                                    <div class="email-content">
+                                        <div class="email-line"></div>
+                                        <div class="email-line small"></div>
+                                    </div>
+                                </div>
+                                <div class="email-item">
+                                    <div class="email-avatar"></div>
+                                    <div class="email-content">
+                                        <div class="email-subject" id="desktop-preview">🎯 Countdown to 2025: Claim Your AI Ma</div>
+                                    </div>
+                                </div>
+                                <div class="email-item faded">
+                                    <div class="email-avatar"></div>
+                                    <div class="email-content">
+                                        <div class="email-line"></div>
+                                        <div class="email-line small"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="preview-box">
-                        <div class="preview-label">Mobile View (20 characters)</div>
-                        <div class="preview-content" id="mobile-preview"></div>
+                    
+                    <div class="mobile-preview">
+                        <div class="mobile-frame">
+                            <div class="mobile-notch"></div>
+                            <div class="email-mobile-interface">
+                                <div class="email-item faded">
+                                    <div class="email-avatar"></div>
+                                    <div class="email-content">
+                                        <div class="email-line"></div>
+                                        <div class="email-line small"></div>
+                                    </div>
+                                </div>
+                                <div class="email-item">
+                                    <div class="email-avatar"></div>
+                                    <div class="email-content">
+                                        <div class="email-subject" id="mobile-preview">🎯 Countdown to 2025:</div>
+                                    </div>
+                                </div>
+                                <div class="email-item faded">
+                                    <div class="email-avatar"></div>
+                                    <div class="email-content">
+                                        <div class="email-line"></div>
+                                        <div class="email-line small"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="metric-insight">Make sure this preview reads well on both desktop and mobile devices.</div>
             </div>
 
             <div class="section-divider"></div>
@@ -1097,6 +1333,34 @@
                 'extraordinary', 'surprising', 'essential', 'critical', 'powerful', 'ultimate', 'perfect',
                 'exceptional', 'crucial', 'vital', 'unique', 'insider', 'today', 'tonight'
             ];
+            
+            // Function to set the sentiment UI based on score
+            function updateSentimentUI(score) {
+                // Format to just 3 decimal places (e.g., -0.100 instead of -0.10000000000000009)
+                const formattedScore = parseFloat(score.toFixed(3));
+                sentimentScore.textContent = formattedScore;
+                
+                // Convert -1 to 1 scale to 0% to 100%
+                const sentimentPercentage = Math.max(0, Math.min(100, (score + 1) / 2 * 100));
+                
+                // Set progress bar width
+                sentimentProgress.style.width = `${sentimentPercentage}%`;
+                
+                // Set appropriate class and text based on score
+                if (score > 0.25) {
+                    sentimentIcon.className = 'metric-icon success';
+                    sentimentInsight.textContent = 'Positive sentiment may increase open rates for most audiences.';
+                    sentimentProgress.className = 'progress-fill progress-optimal';
+                } else if (score >= -0.25) {
+                    sentimentIcon.className = 'metric-icon neutral';
+                    sentimentInsight.textContent = 'Neutral sentiment is generally safe for most audiences.';
+                    sentimentProgress.className = 'progress-fill progress-warning';
+                } else {
+                    sentimentIcon.className = 'metric-icon warning';
+                    sentimentInsight.textContent = 'Negative sentiment can work in some contexts but may decrease open rates.';
+                    sentimentProgress.className = 'progress-fill progress-danger';
+                }
+            }
 
             // Character count updater
             subjectInput.addEventListener('input', function() {
@@ -1293,27 +1557,7 @@
                 
                 // === SENTIMENT ANALYSIS ===
                 const sentimentValue = getSentimentScore(subject);
-                sentimentScore.textContent = sentimentValue.toFixed(3);
-                
-                if (sentimentValue > 0.25) {
-                    sentimentIcon.className = 'metric-icon success';
-                    sentimentInsight.textContent = 'Positive sentiment may increase open rates for most audiences.';
-                    sentimentProgress.className = 'progress-fill progress-optimal';
-                } else if (sentimentValue >= -0.25) {
-                    sentimentIcon.className = 'metric-icon neutral';
-                    sentimentInsight.textContent = 'Neutral sentiment is generally safe for most audiences.';
-                    sentimentProgress.className = 'progress-fill progress-warning';
-                } else {
-                    sentimentIcon.className = 'metric-icon warning';
-                    sentimentInsight.textContent = 'Negative sentiment can work in some contexts but may decrease open rates.';
-                    sentimentProgress.className = 'progress-fill progress-danger';
-                }
-                
-                setTimeout(() => {
-                    // Convert -1 to 1 scale to 0% to 100%
-                    const sentimentPercentage = Math.max(0, Math.min(100, (sentimentValue + 1) / 2 * 100));
-                    sentimentProgress.style.width = `${sentimentPercentage}%`;
-                }, 300);
+                updateSentimentUI(sentimentValue);
                 
                 // === CHECKLIST ITEMS ANALYSIS ===
                 
